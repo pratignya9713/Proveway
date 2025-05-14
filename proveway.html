@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Boxes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      min-height: 100vh;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    .box {
+      width: 300px;
+      height: 100px;
+      background-color: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .box.expanded {
+      height: 250px;
+    }
+
+    .options {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      max-height: 0;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .box.expanded .options {
+      opacity: 1;
+      max-height: 500px;
+    }
+
+    .option-group {
+      margin-top: 10px;
+    }
+
+    .option-group label {
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" onclick="toggleBox(this)">
+    Click to Expand (Top)
+    <div class="options">
+      <div class="option-group">
+        <label for="color1">Color:</label>
+        <select id="color1">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label for="size1">Size:</label>
+        <select id="size1">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" onclick="toggleBox(this)">
+    Click to Expand (Middle)
+    <div class="options">
+      <div class="option-group">
+        <label for="color2">Color:</label>
+        <select id="color2">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label for="size2">Size:</label>
+        <select id="size2">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" onclick="toggleBox(this)">
+    Click to Expand (Bottom)
+    <div class="options">
+      <div class="option-group">
+        <label for="color3">Color:</label>
+        <select id="color3">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label for="size3">Size:</label>
+        <select id="size3">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleBox(element) {
+      document.querySelectorAll('.box').forEach(box => {
+        if (box !== element) box.classList.remove('expanded');
+      });
+      element.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
